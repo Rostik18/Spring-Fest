@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SF.Domain\SF.Domain.csproj" />
+    <ProjectReference Include="..\SF.Services.Models\SF.Services.Models.csproj" />
+    <ProjectReference Include="..\SF.WebAPI.Models\SF.WebAPI.Models.csproj" />
+  </ItemGroup>
+
+</Project>

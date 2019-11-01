@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SF.Mappers\SF.Mappers.csproj" />
+    <ProjectReference Include="..\SF.Services\SF.Services.csproj" />
+  </ItemGroup>
+
+</Project>
