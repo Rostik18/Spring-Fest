@@ -1,4 +1,5 @@
 ﻿using SF.Domain.Entities.Base;
+using System.Collections.Generic;
 
 namespace SF.Domain.Entities
 {
@@ -6,5 +7,8 @@ namespace SF.Domain.Entities
     {
         public string Year { get; set; }
         public string Location { get; set; }
+
+        public List<PerformanceEntity> Performances { get; set; }
+        public List<PartnerEntity> Partners { get; set; }
     }
 }

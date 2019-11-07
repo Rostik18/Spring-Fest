@@ -7,5 +7,7 @@ namespace SF.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public int FestivalId { get; set; }
+
+        public PerformanceEntity Performance { get; set; }
     }
 }

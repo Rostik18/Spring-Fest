@@ -10,5 +10,8 @@ namespace SF.Domain.Entities
         public int BandId { get; set; }
         public int StageId { get; set; }
         public int FestivalId { get; set; }
+
+        public BandEntity Band { get; set; }
+        public StageEntity Stage { get; set; }
     }
 }
