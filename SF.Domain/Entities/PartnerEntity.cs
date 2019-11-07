@@ -8,6 +8,6 @@ namespace SF.Domain.Entities
         public string Description { get; set; }
         public int FestivalId { get; set; }
 
-        public PerformanceEntity Performance { get; set; }
+        public FestivalEntity Festival { get; set; }
     }
 }

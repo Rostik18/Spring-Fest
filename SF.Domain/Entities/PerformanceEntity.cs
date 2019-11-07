@@ -13,5 +13,6 @@ namespace SF.Domain.Entities
 
         public BandEntity Band { get; set; }
         public StageEntity Stage { get; set; }
+        public FestivalEntity Festival { get; set; }
     }
 }

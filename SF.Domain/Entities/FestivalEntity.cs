@@ -10,5 +10,6 @@ namespace SF.Domain.Entities
 
         public List<PerformanceEntity> Performances { get; set; }
         public List<PartnerEntity> Partners { get; set; }
+        public List<TicketEntity> Tickets { get; set; }
     }
 }
