@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SF.Domain.Entities;
+using SF.Infrastructure.DbConfigurations;
 
 namespace SF.Infrastructure
 {
@@ -26,6 +27,17 @@ namespace SF.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new BandConfiguration());
+            modelBuilder.ApplyConfiguration(new BandGenreConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new FestivalConfiguration());
+            modelBuilder.ApplyConfiguration(new GenreConfiguration());
+            modelBuilder.ApplyConfiguration(new PartnerConfiguration());
+            modelBuilder.ApplyConfiguration(new PerformanceConfiguration());
+            modelBuilder.ApplyConfiguration(new PurchaseConfiguration());
+            modelBuilder.ApplyConfiguration(new StageConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
         }
     }
 }

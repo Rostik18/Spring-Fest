@@ -21,8 +21,4 @@
     <ProjectReference Include="..\SF.Domain\SF.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DbConfigurations\" />
-  </ItemGroup>
-
 </Project>
