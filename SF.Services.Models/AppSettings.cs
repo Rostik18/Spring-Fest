@@ -5,8 +5,17 @@ namespace SF.Services.Models
     {
         public string ConnectionString { get; set; }
         public SwaggerSettings SwaggerSettings { get; set; }
+        public JwtSettings JwtSettings { get; set; }
+        public Admin Admin { get; set; }
     }
 
+
+    public class JwtSettings
+    {
+        public string SecretKey { get; set; }
+        public string Issuer { get; set; }
+        public string Expires { get; set; }
+    }
 
     public class SwaggerSettings
     {
@@ -33,5 +42,11 @@ namespace SF.Services.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+    }
+
+    public class Admin
+    {
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

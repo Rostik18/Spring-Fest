@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using SF.Services.Models.Admins;
+using SF.WebAPI.Models.Admins;
 
 namespace SF.Mappers
 {
@@ -6,7 +8,7 @@ namespace SF.Mappers
     {
         public WebAPIMapperProfile()
         {
-
+            CreateMap<AuthorizedAdminDTO, AuthorizedAdminViewModel>();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using SF.IoC;
 using SF.Services.Interfaces.CustomExceptions;
 using SF.Services.Models;
+using SF.WebAPI.Extensions;
 using SF.WebAPI.Filters;
 
 namespace SF.WebAPI
@@ -49,9 +51,12 @@ namespace SF.WebAPI
             services.AddAppSettingsConfiguration(Configuration);
             var appSettings = services.BuildServiceProvider().GetService<IOptions<AppSettings>>().Value;
 
+            services.AddAuthenticationConfiguration(appSettings.JwtSettings.SecretKey, appSettings.JwtSettings.Issuer);
+
             #region Swagger
 
             var swaggerInfoSettings = appSettings.SwaggerSettings.SwaggerInfoSettings;
+            var swaggerApiSchemeSettings = appSettings.SwaggerSettings.SwaggerApiSchemeSettings;
 
             services.AddSwaggerGen(c =>
             {
@@ -61,12 +66,34 @@ namespace SF.WebAPI
                     Version = swaggerInfoSettings.Version,
                     Description = swaggerInfoSettings.Description,
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Name = swaggerApiSchemeSettings.Name,
+                    Description = swaggerApiSchemeSettings.Description,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+                    {
+                        new OpenApiSecurityScheme{
+                            Reference = new OpenApiReference{
+                                Id = "Bearer", //The name of the previously defined security scheme.
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        },new List<string>()
+                    }
+                });
             });
 
             #endregion
 
+            services.AddMapper();
+
             services.AddDatabaseContext(appSettings.ConnectionString);
 
+            services.AddCustomServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,6 +121,7 @@ namespace SF.WebAPI
 
             #endregion
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
 
             app.UseMvc(routes =>
