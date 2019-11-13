@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SF.Infrastructure\SF.Infrastructure.csproj" />
     <ProjectReference Include="..\SF.Services.Interfaces\SF.Services.Interfaces.csproj" />
   </ItemGroup>
