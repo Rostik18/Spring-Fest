@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using SF.Domain.Entities;
+using SF.Services.Models.Bands;
+using SF.Services.Models.Genres;
 
 namespace SF.Mappers
 {
@@ -6,7 +9,8 @@ namespace SF.Mappers
     {
         public ServicesMapperProfile()
         {
-
+            CreateMap<GenreEntity, GenreDTO>();
+            CreateMap<BandEntity, BandDTO>();
         }
     }
 }
