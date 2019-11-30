@@ -9,6 +9,7 @@ namespace SF.IoC
         public static void AddCustomServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IAdminService, AdminService>();
+            serviceCollection.AddTransient<IBandService, BandService>();
         }
     }
 }
