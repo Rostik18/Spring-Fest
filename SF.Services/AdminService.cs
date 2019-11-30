@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using SF.Infrastructure;
 using SF.Services.Interfaces;
 using SF.Services.Interfaces.CustomExceptions;
 using SF.Services.Models;
@@ -18,17 +20,20 @@ namespace SF.Services
     {
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
+        private readonly SFDbContext _DBContext;
 
-        public AdminService(IMapper mapper, IOptions<AppSettings> appSettings)
+        public AdminService(IMapper mapper, IOptions<AppSettings> appSettings, SFDbContext dbContext)
         {
             _mapper = mapper;
             _appSettings = appSettings.Value;
+            _DBContext = dbContext;
         }
 
         public async Task<AuthorizedAdminDTO> AuthorizeAsync(string login, string password)
         {
-            if (_appSettings.Admin.Login != login ||
-                _appSettings.Admin.Password != password)
+            var admin = _DBContext.Admins.FirstOrDefault(x => x.Login == login && x.Password == password);
+
+            if (admin == null)
             {
                 throw new AccessForbiddenException("Invalid login or password.");
             }

@@ -10,6 +10,7 @@ namespace SF.Infrastructure
         {
         }
 
+        public DbSet<AdminEntity> Admins { get; set; }
         public DbSet<BandEntity> Bands { get; set; }
         public DbSet<CustomerEntity> Customers { get; set; }
         public DbSet<FestivalEntity> Festivals { get; set; }
@@ -38,6 +39,9 @@ namespace SF.Infrastructure
             modelBuilder.ApplyConfiguration(new PurchaseConfiguration());
             modelBuilder.ApplyConfiguration(new StageConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.ApplyConfiguration(new AdminConfiguration());
+
+            modelBuilder.Seed();
         }
     }
 }
