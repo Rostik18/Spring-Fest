@@ -8,7 +8,6 @@ namespace SF.Infrastructure.DbConfigurations
     {
         public void Configure(EntityTypeBuilder<PartnerEntity> builder)
         {
-
             builder.ToTable("Partners");
 
             builder.HasKey(e => e.Id);
@@ -20,12 +19,6 @@ namespace SF.Infrastructure.DbConfigurations
             builder.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsRequired();
-
-            builder
-               .HasOne(p => p.Festival)
-               .WithMany(f => f.Partners)
-               .HasForeignKey(p => p.FestivalId)
-               .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

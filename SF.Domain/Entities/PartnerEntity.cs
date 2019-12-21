@@ -1,4 +1,5 @@
 ﻿using SF.Domain.Entities.Base;
+using System.Collections.Generic;
 
 namespace SF.Domain.Entities
 {
@@ -8,6 +9,6 @@ namespace SF.Domain.Entities
         public string Description { get; set; }
         public int FestivalId { get; set; }
 
-        public FestivalEntity Festival { get; set; }
+        public List<PartnerFestivalEntity> PartnerFestivals { get; set; }
     }
 }

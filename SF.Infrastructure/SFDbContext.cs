@@ -35,6 +35,7 @@ namespace SF.Infrastructure
             modelBuilder.ApplyConfiguration(new FestivalConfiguration());
             modelBuilder.ApplyConfiguration(new GenreConfiguration());
             modelBuilder.ApplyConfiguration(new PartnerConfiguration());
+            modelBuilder.ApplyConfiguration(new PartnerFestivalConfiguration());
             modelBuilder.ApplyConfiguration(new PerformanceConfiguration());
             modelBuilder.ApplyConfiguration(new PurchaseConfiguration());
             modelBuilder.ApplyConfiguration(new StageConfiguration());

@@ -9,7 +9,7 @@ namespace SF.Domain.Entities
         public string Location { get; set; }
 
         public List<PerformanceEntity> Performances { get; set; }
-        public List<PartnerEntity> Partners { get; set; }
+        public List<PartnerFestivalEntity> PartnerFestivals { get; set; }
         public List<TicketEntity> Tickets { get; set; }
     }
 }
