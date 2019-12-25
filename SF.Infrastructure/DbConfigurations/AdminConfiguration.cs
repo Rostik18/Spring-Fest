@@ -17,8 +17,12 @@ namespace SF.Infrastructure.DbConfigurations
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(e => e.Password)
-                .HasMaxLength(50)
+            builder.Property(e => e.PasswordHash)
+                .HasMaxLength(512)
+                .IsRequired();
+
+            builder.Property(e => e.PasswordSalt)
+                .HasMaxLength(512)
                 .IsRequired();
 
             builder.HasIndex(e => e.Login)

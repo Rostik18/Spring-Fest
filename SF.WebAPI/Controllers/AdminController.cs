@@ -9,9 +9,9 @@ namespace SF.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AdminController : ControllerBase
     {
-
         private readonly IMapper _mapper;
         private readonly IAdminService _adminService;
 
@@ -29,6 +29,14 @@ namespace SF.WebAPI.Controllers
             var authorizedUserViewModel = _mapper.Map<AuthorizedAdminViewModel>(authorizedAdminDTO);
 
             return Ok(authorizedUserViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAdminAsync([FromBody] CreateAdminViewModel createAdminViewModel)
+        {
+            var isAdminCreated = await _adminService.CreateAdminAsync(createAdminViewModel.Login, createAdminViewModel.Password);
+
+            return Ok(isAdminCreated);
         }
     }
 }

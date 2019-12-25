@@ -6,9 +6,12 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using SF.Domain.Entities;
 using SF.Infrastructure;
+using SF.Services.Helpers;
 using SF.Services.Interfaces;
 using SF.Services.Interfaces.CustomExceptions;
 using SF.Services.Models;
@@ -31,15 +34,20 @@ namespace SF.Services
 
         public async Task<AuthorizedAdminDTO> AuthorizeAsync(string login, string password)
         {
-            var admin = _DBContext.Admins.FirstOrDefault(x => x.Login == login && x.Password == password);
+            var admin = _DBContext.Admins.FirstOrDefault(x => x.Login == login);
 
             if (admin == null)
             {
                 throw new AccessForbiddenException("Invalid login or password.");
             }
 
+            if (!PasswordHashHelper.VerifyPasswordHash(password, admin.PasswordHash, admin.PasswordSalt))
+            {
+                throw new AccessForbiddenException("Invalid login or password.");
+            }
+
             var claims = new List<Claim> {
-                new Claim( ClaimTypes.Email, login )
+                new Claim( "login", login )
             };
 
             var authorizedAdmin = new AuthorizedAdminDTO() { Login = login };
@@ -48,6 +56,32 @@ namespace SF.Services
                                         Encoding.ASCII.GetBytes(_appSettings.JwtSettings.SecretKey));
 
             return authorizedAdmin;
+        }
+
+        public async Task<bool> CreateAdminAsync(string login, string password)
+        {
+            var isLoginUnavailable = _DBContext.Admins.Any(admin => admin.Login == login);
+
+            if (isLoginUnavailable)
+            {
+                throw new BadArgumentException("This login is unavailable.");
+            }
+
+            PasswordHashHelper.CreatePasswordHash(password, out byte[] hash, out byte[] salt);
+
+            AdminEntity createAdminEntity = new AdminEntity()
+            {
+                Login = login,
+                PasswordHash = hash,
+                PasswordSalt = salt
+            };
+
+            await _DBContext.Admins.AddAsync(createAdminEntity);
+            await _DBContext.SaveChangesAsync();
+
+            bool isAdminCreated = await _DBContext.Admins.AnyAsync(admin => admin.Login == login);
+
+            return isAdminCreated;
         }
 
         private string GetToken(List<Claim> claims, TimeSpan duration, byte[] securityKey)
