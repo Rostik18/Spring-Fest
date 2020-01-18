@@ -25,8 +25,8 @@ namespace SF.WebAPI.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetAllBendsAsync([FromQuery] [GreaterThanZero] int page,
-                                                          [FromQuery] [GreaterThanZero] int pageSize)
+        public async Task<IActionResult> GetBendsPageAsync([FromQuery] [GreaterThanZero] int page,
+                                                           [FromQuery] [GreaterThanZero] int pageSize)
         {
             var pagedResultDTO = await _bandService.GetBandsPageAsync(page, pageSize);
             var pagedResultViewModel = _mapper.Map<PagedResultViewModel<BandViewModel>>(pagedResultDTO);

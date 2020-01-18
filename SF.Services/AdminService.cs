@@ -34,7 +34,7 @@ namespace SF.Services
 
         public async Task<AuthorizedAdminDTO> AuthorizeAsync(string login, string password)
         {
-            var admin = _DBContext.Admins.FirstOrDefault(x => x.Login == login);
+            var admin = await _DBContext.Admins.FirstOrDefaultAsync(x => x.Login == login);
 
             if (admin == null)
             {
@@ -82,6 +82,63 @@ namespace SF.Services
             bool isAdminCreated = await _DBContext.Admins.AnyAsync(admin => admin.Login == login);
 
             return isAdminCreated;
+        }
+
+        public async Task<PagedResultDTO<AdminDTO>> GetAdminsPageAsync(int page, int pageSize)
+        {
+            var query = _DBContext.Admins;
+
+            var pagedResult = await _DBContext.GetPage<AdminEntity, AdminDTO>(_mapper, query, page, pageSize);
+            return pagedResult;
+        }
+
+        public async Task DeleteAdminAsync(int adminId)
+        {
+            AdminEntity adminEntity = await _DBContext.Admins.FirstOrDefaultAsync(a => a.Id == adminId);
+
+            if (adminEntity == null)
+            {
+                throw new ItemNotFoundException($"Admin with id {adminId} not found.");
+            }
+
+            _DBContext.Admins.Remove(adminEntity);
+            await _DBContext.SaveChangesAsync();
+        }
+
+        public async Task<AdminDTO> UpdateAdminAsync(UpdateAdminDTO updateAdminDTO)
+        {
+            if (string.IsNullOrWhiteSpace(updateAdminDTO.NewLogin) &&
+                string.IsNullOrWhiteSpace(updateAdminDTO.NewPassword))
+            {
+                throw new BadArgumentException("The new login and password cannot be blank at the same time. There is nothing to update.");
+            }
+
+            AdminEntity admin = await _DBContext.Admins.FirstOrDefaultAsync(a => a.Id == updateAdminDTO.Id);
+
+            if (admin == null)
+            {
+                throw new BadArgumentException($"Admin with id {updateAdminDTO.Id} not found.");
+            }
+
+            //Подумати!!!
+            if (!string.IsNullOrWhiteSpace(updateAdminDTO.NewLogin))
+            {
+                admin.Login = updateAdminDTO.NewLogin;
+            }
+            if (!string.IsNullOrWhiteSpace(updateAdminDTO.NewPassword))
+            {
+                PasswordHashHelper.CreatePasswordHash(updateAdminDTO.NewPassword, out var hash, out var sail);
+
+                admin.PasswordHash = hash;
+                admin.PasswordSalt = sail;
+            }
+
+            _DBContext.Admins.Update(admin);
+            await _DBContext.SaveChangesAsync();
+
+            var updatedAdminDTO = _mapper.Map<AdminDTO>(admin);
+
+            return updatedAdminDTO;
         }
 
         private string GetToken(List<Claim> claims, TimeSpan duration, byte[] securityKey)

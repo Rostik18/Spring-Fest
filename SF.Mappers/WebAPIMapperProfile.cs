@@ -14,6 +14,9 @@ namespace SF.Mappers
         {
             CreateMap<AuthorizedAdminDTO, AuthorizedAdminViewModel>();
             CreateMap<PagedResultDTO<BandDTO>, PagedResultViewModel<BandViewModel>>();
+            CreateMap<PagedResultDTO<AdminDTO>, PagedResultViewModel<AdminViewModel>>();
+            CreateMap<UpdateAdminViewModel, UpdateAdminDTO>();
+            CreateMap<AdminDTO, AdminViewModel>();
         }
     }
 }
