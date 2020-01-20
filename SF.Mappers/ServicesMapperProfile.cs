@@ -10,10 +10,15 @@ namespace SF.Mappers
     {
         public ServicesMapperProfile()
         {
-            CreateMap<GenreEntity, GenreDTO>();
-            CreateMap<BandEntity, BandDTO>();
+            //Admins
             CreateMap<AdminDTO, AdminEntity>();
             CreateMap<AdminEntity, AdminDTO>();
+
+            //Genres
+            CreateMap<GenreEntity, GenreDTO>();
+
+            //Bands
+            CreateMap<BandEntity, BandDTO>();
         }
     }
 }

@@ -25,7 +25,8 @@ namespace SF.Services
         {
             var query = _DBContext.Bands
                 .Include(band => band.BandGenres)
-                .ThenInclude(bg => bg.Genre);
+                .ThenInclude(bg => bg.Genre)
+                .AsNoTracking();
 
             var pagedResult = await _DBContext.GetPage<BandEntity, BandDTO>(_mapper, query, page, pageSize);
             return pagedResult;

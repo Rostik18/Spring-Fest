@@ -86,7 +86,7 @@ namespace SF.Services
 
         public async Task<PagedResultDTO<AdminDTO>> GetAdminsPageAsync(int page, int pageSize)
         {
-            var query = _DBContext.Admins;
+            var query = _DBContext.Admins.AsNoTracking();
 
             var pagedResult = await _DBContext.GetPage<AdminEntity, AdminDTO>(_mapper, query, page, pageSize);
             return pagedResult;

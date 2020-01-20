@@ -10,6 +10,7 @@ namespace SF.IoC
         {
             serviceCollection.AddTransient<IAdminService, AdminService>();
             serviceCollection.AddTransient<IBandService, BandService>();
+            serviceCollection.AddTransient<IGenreService, GenreService>();
         }
     }
 }
