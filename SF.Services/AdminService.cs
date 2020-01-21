@@ -101,6 +101,11 @@ namespace SF.Services
                 throw new ItemNotFoundException($"Admin with id {adminId} not found.");
             }
 
+            if (_DBContext.Admins.Count() < 2)
+            {
+                throw new AccessForbiddenException("You can not delete the last admin.");
+            }
+
             _DBContext.Admins.Remove(adminEntity);
             await _DBContext.SaveChangesAsync();
         }
