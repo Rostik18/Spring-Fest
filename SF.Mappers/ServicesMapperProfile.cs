@@ -3,6 +3,7 @@ using SF.Domain.Entities;
 using SF.Services.Models.Admins;
 using SF.Services.Models.Bands;
 using SF.Services.Models.Genres;
+using SF.Services.Models.Stages;
 
 namespace SF.Mappers
 {
@@ -16,6 +17,9 @@ namespace SF.Mappers
 
             //Genres
             CreateMap<GenreEntity, GenreDTO>();
+
+            //Stages
+            CreateMap<StageEntity, StageDTO>();
 
             //Bands
             CreateMap<BandEntity, BandDTO>();
