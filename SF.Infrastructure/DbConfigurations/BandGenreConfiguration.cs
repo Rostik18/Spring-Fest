@@ -17,13 +17,13 @@ namespace SF.Infrastructure.DbConfigurations
                 .HasOne(bg => bg.Band)
                 .WithMany(b => b.BandGenres)
                 .HasForeignKey(bg => bg.BandId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(bg => bg.Genre)
                 .WithMany(g => g.BandGenres)
                 .HasForeignKey(bg => bg.GenreId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
