@@ -5,9 +5,10 @@ namespace SF.Services.Models.Bands
 {
     public class BandDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public List<GenreDTO> BandGenres { get; set; }
+        public IList<GenreDTO> Genres { get; set; }
     }
 }

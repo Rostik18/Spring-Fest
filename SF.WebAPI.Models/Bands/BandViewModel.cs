@@ -5,9 +5,10 @@ namespace SF.WebAPI.Models.Bands
 {
     public class BandViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public List<GenreViewModel> BandGenres { get; set; }
+        public IList<GenreViewModel> Genres { get; set; }
     }
 }

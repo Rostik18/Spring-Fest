@@ -36,6 +36,9 @@ namespace SF.Mappers
 
             //Bends
             CreateMap<PagedResultDTO<BandDTO>, PagedResultViewModel<BandViewModel>>();
+            CreateMap<BandDTO, BandViewModel>();
+            CreateMap<CreateBandViewModel, CreateBandDTO>();
+            CreateMap<UpdateBandViewModel, UpdateBandDTO>();
         }
     }
 }

@@ -4,6 +4,7 @@ using SF.Services.Models.Admins;
 using SF.Services.Models.Bands;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Stages;
+using System.Linq;
 
 namespace SF.Mappers
 {
@@ -22,7 +23,9 @@ namespace SF.Mappers
             CreateMap<StageEntity, StageDTO>();
 
             //Bands
-            CreateMap<BandEntity, BandDTO>();
+            CreateMap<BandEntity, BandDTO>()
+            .ForMember(dto => dto.Genres,
+                       opt => opt.MapFrom(ent => ent.BandGenres.Select(x => x.Genre).ToList()));
         }
     }
 }
