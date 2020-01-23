@@ -31,6 +31,7 @@ namespace SF.Services
                 .AsNoTracking();
 
             var pagedResult = await _DBContext.GetPage<BandEntity, BandDTO>(_mapper, query, page, pageSize);
+
             return pagedResult;
         }
 

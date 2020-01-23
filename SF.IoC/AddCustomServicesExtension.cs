@@ -12,6 +12,7 @@ namespace SF.IoC
             serviceCollection.AddTransient<IBandService, BandService>();
             serviceCollection.AddTransient<IGenreService, GenreService>();
             serviceCollection.AddTransient<IStageService, StageService>();
+            serviceCollection.AddTransient<IPartnerService, PartnerService>();
         }
     }
 }

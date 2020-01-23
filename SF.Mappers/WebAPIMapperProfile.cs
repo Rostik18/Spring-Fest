@@ -3,11 +3,13 @@ using SF.Services.Models;
 using SF.Services.Models.Admins;
 using SF.Services.Models.Bands;
 using SF.Services.Models.Genres;
+using SF.Services.Models.Partners;
 using SF.Services.Models.Stages;
 using SF.WebAPI.Models;
 using SF.WebAPI.Models.Admins;
 using SF.WebAPI.Models.Bands;
 using SF.WebAPI.Models.Genres;
+using SF.WebAPI.Models.Partners;
 using SF.WebAPI.Models.Stages;
 
 namespace SF.Mappers
@@ -39,6 +41,12 @@ namespace SF.Mappers
             CreateMap<BandDTO, BandViewModel>();
             CreateMap<CreateBandViewModel, CreateBandDTO>();
             CreateMap<UpdateBandViewModel, UpdateBandDTO>();
+
+            //Partners
+            CreateMap<PagedResultDTO<PartnerDTO>, PagedResultViewModel<PartnerViewModel>>();
+            CreateMap<PartnerDTO, PartnerViewModel>();
+            CreateMap<CreatePartnerViewModel, CreatePartnerDTO>();
+            CreateMap<UpdatePartnerViewModel, UpdatePartnerDTO>();
         }
     }
 }
