@@ -16,13 +16,13 @@ namespace SF.Infrastructure.DbConfigurations
                 .HasOne(pf => pf.Festival)
                 .WithMany(f => f.PartnerFestivals)
                 .HasForeignKey(pf => pf.FestivalId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(pf => pf.Partner)
                 .WithMany(p => p.PartnerFestivals)
                 .HasForeignKey(pf => pf.PartnerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
