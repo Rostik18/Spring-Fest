@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SF.Services.Interfaces;
 using SF.Services.Models.Genres;
-using SF.WebAPI.Models;
 using SF.WebAPI.Models.CustomValidations;
 using SF.WebAPI.Models.Genres;
 using System.Collections.Generic;
@@ -54,9 +53,9 @@ namespace SF.WebAPI.Controllers
 
             var genreDTO = await _genreService.CreateGenreAsync(createGenreDTO);
 
-            var ganreViewModel = _mapper.Map<GenreViewModel>(genreDTO);
+            var genreViewModel = _mapper.Map<GenreViewModel>(genreDTO);
 
-            return Ok(ganreViewModel);
+            return Ok(genreViewModel);
         }
 
         [HttpPut]

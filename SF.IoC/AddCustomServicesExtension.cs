@@ -13,6 +13,7 @@ namespace SF.IoC
             serviceCollection.AddTransient<IGenreService, GenreService>();
             serviceCollection.AddTransient<IStageService, StageService>();
             serviceCollection.AddTransient<IPartnerService, PartnerService>();
+            serviceCollection.AddTransient<IFestivalService, FestivalService>();
         }
     }
 }
