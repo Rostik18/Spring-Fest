@@ -53,7 +53,7 @@ namespace SF.Services
 
         public async Task<PagedResultDTO<PartnerDTO>> GetPartnersPageAsync(int page, int pageSize)
         {
-            var query = _DBContext.Partners.AsNoTracking();
+            var query = _DBContext.Partners;
 
             var pagedResult = await _DBContext.GetPage<PartnerEntity, PartnerDTO>(_mapper, query, page, pageSize);
 

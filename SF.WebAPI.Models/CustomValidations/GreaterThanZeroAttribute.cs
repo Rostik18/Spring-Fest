@@ -10,10 +10,9 @@ namespace SF.WebAPI.Models.CustomValidations
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-
             if (value == null)
             {
-                return new ValidationResult($"{validationContext.DisplayName} must have value.");
+                return ValidationResult.Success;
             }
 
             if (!(value is int id))

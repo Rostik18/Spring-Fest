@@ -5,6 +5,7 @@ using SF.Services.Models.Bands;
 using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
+using SF.Services.Models.Performances;
 using SF.Services.Models.Stages;
 using System.Linq;
 
@@ -36,6 +37,9 @@ namespace SF.Mappers
             CreateMap<FestivalEntity, FestivalDTO>()
             .ForMember(dto => dto.Partners,
                        opt => opt.MapFrom(ent => ent.PartnerFestivals.Select(x => x.Partner).ToList()));
+
+            //Performances
+            CreateMap<PerformanceEntity, PerformanceDTO>();
         }
     }
 }

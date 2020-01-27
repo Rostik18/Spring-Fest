@@ -5,6 +5,7 @@ using SF.Services.Models.Bands;
 using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
+using SF.Services.Models.Performances;
 using SF.Services.Models.Stages;
 using SF.WebAPI.Models;
 using SF.WebAPI.Models.Admins;
@@ -12,6 +13,7 @@ using SF.WebAPI.Models.Bands;
 using SF.WebAPI.Models.Festivals;
 using SF.WebAPI.Models.Genres;
 using SF.WebAPI.Models.Partners;
+using SF.WebAPI.Models.Performances;
 using SF.WebAPI.Models.Stages;
 
 namespace SF.Mappers
@@ -54,6 +56,12 @@ namespace SF.Mappers
             CreateMap<FestivalDTO, FestivalViewModel>();
             CreateMap<CreateFestivalViewModel, CreateFestivalDTO>();
             CreateMap<UpdateFestivalViewModel, UpdateFestivalDTO>();
+
+            //Performances
+            CreateMap<PagedResultDTO<PerformanceDTO>, PagedResultViewModel<PerformanceViewModel>>();
+            CreateMap<PerformanceDTO, PerformanceViewModel>();
+            CreateMap<CreatePerformanceViewModel, CreatePerformanceDTO>();
+            CreateMap<UpdatePerformanceViewModel, UpdatePerformanceDTO>();
         }
     }
 }

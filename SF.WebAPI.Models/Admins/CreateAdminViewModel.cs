@@ -5,9 +5,11 @@ namespace SF.WebAPI.Models.Admins
     public class CreateAdminViewModel
     {
         [Required]
+        [MaxLength(100)]
         public string Login { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Password { get; set; }
 
         [Required]

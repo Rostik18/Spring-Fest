@@ -42,7 +42,9 @@ namespace SF.WebAPI
                     {
                         throw new BadArgumentException(string.Join(" ", context.ModelState.Values.SelectMany(value => value.Errors.Select(error => error.ErrorMessage)).ToList()));
                     };
-                });
+                })
+                .AddJsonOptions(options =>
+                                options.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
 
             services.AddRouting(options => options.LowercaseUrls = true);
 

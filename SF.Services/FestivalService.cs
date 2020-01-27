@@ -53,17 +53,20 @@ namespace SF.Services
 
         public async Task<FestivalDTO> CreateFestivalAsync(CreateFestivalDTO createFestivalDTO)
         {
-            var partners = await _DBContext.Partners.Where(p => createFestivalDTO.PartnerIds.Contains(p.Id)).ToListAsync();
-
             var festival = new FestivalEntity
             {
                 Year = createFestivalDTO.Year,
                 Location = createFestivalDTO.Location
             };
 
-            if (partners.Count > 0)
+            if (createFestivalDTO.PartnerIds != null)
             {
-                festival.PartnerFestivals = partners.Select(partner => new PartnerFestivalEntity { PartnerId = partner.Id }).ToList();
+                var partners = await _DBContext.Partners.Where(p => createFestivalDTO.PartnerIds.Contains(p.Id)).ToListAsync();
+
+                if (partners.Count > 0)
+                {
+                    festival.PartnerFestivals = partners.Select(partner => new PartnerFestivalEntity { PartnerId = partner.Id }).ToList();
+                }
             }
 
             await _DBContext.Festivals.AddAsync(festival);
