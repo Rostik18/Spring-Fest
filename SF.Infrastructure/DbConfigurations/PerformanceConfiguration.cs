@@ -23,19 +23,19 @@ namespace SF.Infrastructure.DbConfigurations
                .HasOne(p => p.Band)
                .WithMany(b => b.Performances)
                .HasForeignKey(p => p.BandId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(p => p.Stage)
                 .WithMany(s => s.Performances)
                 .HasForeignKey(p => p.StageId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(p => p.Festival)
                 .WithMany(f => f.Performances)
                 .HasForeignKey(p => p.FestivalId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
