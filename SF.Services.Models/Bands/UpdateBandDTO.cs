@@ -7,6 +7,7 @@ namespace SF.Services.Models.Bands
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string PhotoURL { get; set; }
 
         public IList<int> GenreIdsToAdd { get; set; }
         public IList<int> GenreIdsToRemove { get; set; }

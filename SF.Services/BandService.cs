@@ -61,6 +61,7 @@ namespace SF.Services
             {
                 Name = createBandDTO.Name,
                 Description = createBandDTO.Description,
+                PhotoURL = createBandDTO.PhotoURL,
                 BandGenres = genres.Select(genre => new BandGenreEntity { GenreId = genre.Id }).ToList()
             };
 
@@ -91,6 +92,10 @@ namespace SF.Services
             if (!string.IsNullOrWhiteSpace(updateBandDTO.Description))
             {
                 band.Description = updateBandDTO.Description;
+            }
+            if (!string.IsNullOrWhiteSpace(updateBandDTO.PhotoURL))
+            {
+                band.PhotoURL = updateBandDTO.PhotoURL;
             }
             if (updateBandDTO.GenreIdsToAdd.Count > 0)
             {

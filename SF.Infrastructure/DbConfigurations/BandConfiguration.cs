@@ -20,6 +20,10 @@ namespace SF.Infrastructure.DbConfigurations
             builder.Property(e => e.Description)
                 .HasMaxLength(1000)
                 .IsRequired();
+
+            builder.Property(e => e.PhotoURL)
+                .HasMaxLength(1000)
+                .IsRequired();
         }
     }
 }

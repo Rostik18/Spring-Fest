@@ -18,7 +18,7 @@ namespace SF.Infrastructure.DbConfigurations
                 .IsRequired();
 
             builder.Property(e => e.Location)
-                .HasMaxLength(100)
+                .HasMaxLength(1000)
                 .IsRequired();
         }
     }

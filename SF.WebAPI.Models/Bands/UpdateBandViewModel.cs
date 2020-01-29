@@ -16,6 +16,9 @@ namespace SF.WebAPI.Models.Bands
         [MaxLength(1000)]
         public string Description { get; set; }
 
+        [MaxLength(1000)]
+        public string PhotoURL { get; set; }
+
         [ItemsGreaterThanZero]
         public IList<int> GenreIdsToAdd { get; set; }
 
