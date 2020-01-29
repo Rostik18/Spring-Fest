@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MKS.WebAPI.Models.CustomValidations
+namespace SF.WebAPI.Models.CustomValidations
 {
     public class TimeSpanAttribute : ValidationAttribute
     {
@@ -17,9 +17,9 @@ namespace MKS.WebAPI.Models.CustomValidations
                 return new ValidationResult($"{validationContext.DisplayName} must be {nameof(TimeSpan)}");
             }
 
-            if (timeSpan.Days != 0)
+            if (timeSpan.TotalSeconds <= 1)
             {
-                return new ValidationResult("TimeSpan can not be greater, than 23:59:59.9999999");
+                return new ValidationResult("TimeSpan can not be less than 00:00:00.0000000");
             }
 
             return ValidationResult.Success;

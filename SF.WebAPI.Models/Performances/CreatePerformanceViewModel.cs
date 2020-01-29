@@ -1,5 +1,4 @@
-﻿using MKS.WebAPI.Models.CustomValidations;
-using SF.WebAPI.Models.CustomValidations;
+﻿using SF.WebAPI.Models.CustomValidations;
 using System;
 using System.ComponentModel.DataAnnotations;
 

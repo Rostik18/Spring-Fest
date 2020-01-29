@@ -23,13 +23,13 @@ namespace SF.Infrastructure.DbConfigurations
                .HasOne(p => p.Customer)
                .WithMany(c => c.Purchases)
                .HasForeignKey(p => p.CustomerId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(p => p.Ticket)
                 .WithMany(t => t.Purchases)
                 .HasForeignKey(p => p.TicketId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

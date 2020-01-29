@@ -6,7 +6,9 @@ using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
 using SF.Services.Models.Performances;
+using SF.Services.Models.Purchases;
 using SF.Services.Models.Stages;
+using SF.Services.Models.Tickets;
 using System.Linq;
 
 namespace SF.Mappers
@@ -40,6 +42,12 @@ namespace SF.Mappers
 
             //Performances
             CreateMap<PerformanceEntity, PerformanceDTO>();
+
+            //Tickets
+            CreateMap<TicketEntity, TicketDTO>();
+
+            //Purchases
+            CreateMap<PurchaseEntity, PurchaseDTO>();
         }
     }
 }

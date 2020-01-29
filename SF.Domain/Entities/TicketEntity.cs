@@ -9,7 +9,7 @@ namespace SF.Domain.Entities
     {
         public int Price { get; set; }
         public DateTimeOffset BeginingTime { get; set; }
-        public TimeSpan Duration { get; set; }
+        public int Duration { get; set; }
         public TicketType Type { get; set; }
         public int FestivalId { get; set; }
 

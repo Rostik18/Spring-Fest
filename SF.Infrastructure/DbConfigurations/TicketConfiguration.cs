@@ -29,7 +29,7 @@ namespace SF.Infrastructure.DbConfigurations
                .HasOne(t => t.Festival)
                .WithMany(f => f.Tickets)
                .HasForeignKey(t => t.FestivalId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

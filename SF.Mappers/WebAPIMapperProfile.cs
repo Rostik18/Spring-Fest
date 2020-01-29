@@ -6,7 +6,9 @@ using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
 using SF.Services.Models.Performances;
+using SF.Services.Models.Purchases;
 using SF.Services.Models.Stages;
+using SF.Services.Models.Tickets;
 using SF.WebAPI.Models;
 using SF.WebAPI.Models.Admins;
 using SF.WebAPI.Models.Bands;
@@ -14,7 +16,9 @@ using SF.WebAPI.Models.Festivals;
 using SF.WebAPI.Models.Genres;
 using SF.WebAPI.Models.Partners;
 using SF.WebAPI.Models.Performances;
+using SF.WebAPI.Models.Purchases;
 using SF.WebAPI.Models.Stages;
+using SF.WebAPI.Models.Tickets;
 
 namespace SF.Mappers
 {
@@ -62,6 +66,14 @@ namespace SF.Mappers
             CreateMap<PerformanceDTO, PerformanceViewModel>();
             CreateMap<CreatePerformanceViewModel, CreatePerformanceDTO>();
             CreateMap<UpdatePerformanceViewModel, UpdatePerformanceDTO>();
+
+            //Purchases
+            CreateMap<PurchaseDTO, PurchaseViewModel>();
+
+            //Tickets
+            CreateMap<TicketDTO, TicketViewModel>();
+            CreateMap<CreateTicketViewModel, CreateTicketDTO>();
+            CreateMap<UpdateTicketViewModel, UpdateTicketDTO>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MKS.WebAPI.Models.CustomValidations
+namespace SF.WebAPI.Models.CustomValidations
 {
     public class GreaterThanCurrentDateAttribute : ValidationAttribute
     {

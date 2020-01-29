@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SF.Infrastructure;
 
 namespace SF.Infrastructure.Migrations
 {
     [DbContext(typeof(SFDbContext))]
-    partial class SFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200129132208_RemoveTicketDurationColumn")]
+    partial class RemoveTicketDurationColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,9 +297,6 @@ namespace SF.Infrastructure.Migrations
 
                     b.Property<DateTimeOffset>("BeginingTime")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
 
                     b.Property<int>("FestivalId")
                         .HasColumnType("int");

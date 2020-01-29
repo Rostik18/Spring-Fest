@@ -7,8 +7,8 @@ namespace SF.Domain.Entities
     {
         public bool IsAvailable { get; set; }
         public Guid BarCode { get; set; }
-        public int CustomerId { get; set; }
-        public int TicketId { get; set; }
+        public int? CustomerId { get; set; }
+        public int? TicketId { get; set; }
 
         public TicketEntity Ticket { get; set; }
         public CustomerEntity Customer { get; set; }
