@@ -70,7 +70,9 @@ namespace SF.Mappers
             CreateMap<UpdatePerformanceViewModel, UpdatePerformanceDTO>();
 
             //Purchases
+            CreateMap<PagedResultDTO<PurchaseDTO>, PagedResultViewModel<PurchaseViewModel>>();
             CreateMap<PurchaseDTO, PurchaseViewModel>();
+            CreateMap<CreatePurchaseViewModel, CreatePurchaseDTO>();
 
             //Customers
             CreateMap<PagedResultDTO<CustomerDTO>, PagedResultViewModel<CustomerViewModel>>();

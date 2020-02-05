@@ -1,8 +1,6 @@
 ﻿using SF.WebAPI.Models.Enumerations;
 using SF.WebAPI.Models.Festivals;
-using SF.WebAPI.Models.Purchases;
 using System;
-using System.Collections.Generic;
 
 namespace SF.WebAPI.Models.Tickets
 {
@@ -15,6 +13,5 @@ namespace SF.WebAPI.Models.Tickets
         public TicketType Type { get; set; }
 
         public FestivalViewModel Festival { get; set; }
-        public List<PurchaseViewModel> Purchases { get; set; }
     }
 }

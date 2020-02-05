@@ -17,6 +17,7 @@ namespace SF.IoC
             serviceCollection.AddTransient<IPerformanceService, PerformanceService>();
             serviceCollection.AddTransient<ITicketService, TicketService>();
             serviceCollection.AddTransient<ICustomerService, CustomerService>();
+            serviceCollection.AddTransient<IPurchaseService, PurchaseService>();
         }
     }
 }

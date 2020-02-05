@@ -5,6 +5,7 @@ namespace SF.WebAPI.Models.Customers
     public class CreateCustomerViewModel
     {
         [Required]
+        [EmailAddress]
         [MaxLength(50)]
         public string Email { get; set; }
 

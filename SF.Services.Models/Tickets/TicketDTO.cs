@@ -1,8 +1,6 @@
 ﻿using SF.Services.Models.Enumerations;
 using SF.Services.Models.Festivals;
-using SF.Services.Models.Purchases;
 using System;
-using System.Collections.Generic;
 
 namespace SF.Services.Models.Tickets
 {
@@ -15,6 +13,5 @@ namespace SF.Services.Models.Tickets
         public TicketType Type { get; set; }
 
         public FestivalDTO Festival { get; set; }
-        public List<PurchaseDTO> Purchases { get; set; }
     }
 }

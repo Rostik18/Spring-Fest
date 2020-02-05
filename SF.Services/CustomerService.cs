@@ -29,10 +29,14 @@ namespace SF.Services
 
             if (customer != null)
             {
-                customer.FirstName = createCustomerDTO.FirstName;
-                customer.LastName = createCustomerDTO.LastName;
+                if (customer.FirstName != createCustomerDTO.FirstName ||
+                    customer.LastName != createCustomerDTO.LastName)
+                {
+                    customer.FirstName = createCustomerDTO.FirstName;
+                    customer.LastName = createCustomerDTO.LastName;
 
-                _DBContext.Customers.Update(customer);
+                    _DBContext.Customers.Update(customer);
+                }
             }
             else
             {
@@ -68,7 +72,7 @@ namespace SF.Services
 
         public async Task<CustomerDTO> GetCustomerByIdAsync(int customerId)
         {
-            var customer = await _DBContext.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
+            var customer = await _DBContext.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.Id == customerId);
 
             if (customer == null)
             {
