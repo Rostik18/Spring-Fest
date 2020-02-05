@@ -2,6 +2,7 @@
 using SF.Services.Models;
 using SF.Services.Models.Admins;
 using SF.Services.Models.Bands;
+using SF.Services.Models.Customers;
 using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
@@ -12,6 +13,7 @@ using SF.Services.Models.Tickets;
 using SF.WebAPI.Models;
 using SF.WebAPI.Models.Admins;
 using SF.WebAPI.Models.Bands;
+using SF.WebAPI.Models.Customers;
 using SF.WebAPI.Models.Festivals;
 using SF.WebAPI.Models.Genres;
 using SF.WebAPI.Models.Partners;
@@ -69,6 +71,11 @@ namespace SF.Mappers
 
             //Purchases
             CreateMap<PurchaseDTO, PurchaseViewModel>();
+
+            //Customers
+            CreateMap<PagedResultDTO<CustomerDTO>, PagedResultViewModel<CustomerViewModel>>();
+            CreateMap<CustomerDTO, CustomerViewModel>();
+            CreateMap<CreateCustomerViewModel, CreateCustomerDTO>();
 
             //Tickets
             CreateMap<TicketDTO, TicketViewModel>();

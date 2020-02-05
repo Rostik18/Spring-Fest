@@ -16,6 +16,7 @@ namespace SF.IoC
             serviceCollection.AddTransient<IFestivalService, FestivalService>();
             serviceCollection.AddTransient<IPerformanceService, PerformanceService>();
             serviceCollection.AddTransient<ITicketService, TicketService>();
+            serviceCollection.AddTransient<ICustomerService, CustomerService>();
         }
     }
 }

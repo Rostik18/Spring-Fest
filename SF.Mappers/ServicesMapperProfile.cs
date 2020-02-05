@@ -2,6 +2,7 @@
 using SF.Domain.Entities;
 using SF.Services.Models.Admins;
 using SF.Services.Models.Bands;
+using SF.Services.Models.Customers;
 using SF.Services.Models.Festivals;
 using SF.Services.Models.Genres;
 using SF.Services.Models.Partners;
@@ -48,6 +49,9 @@ namespace SF.Mappers
 
             //Purchases
             CreateMap<PurchaseEntity, PurchaseDTO>();
+
+            //Customers
+            CreateMap<CustomerEntity, CustomerDTO>();
         }
     }
 }
