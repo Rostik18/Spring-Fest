@@ -28,9 +28,12 @@ namespace SF.WebAPI.Controllers
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetPerformancesPageAsync([FromQuery] [GreaterThanZero] int page,
-                                                                  [FromQuery] [GreaterThanZero] int pageSize)
+                                                                  [FromQuery] [GreaterThanZero] int pageSize,
+                                                                  [FromQuery] PerformanceFilterViewModel performanceFilterViewModel)
         {
-            var pagedResultDTO = await _performanceService.GetPerformancesPageAsync(page, pageSize);
+            var performanceFilterDTO = _mapper.Map<PerformanceFilterDTO>(performanceFilterViewModel);
+
+            var pagedResultDTO = await _performanceService.GetPerformancesPageAsync(page, pageSize, performanceFilterDTO);
             var pagedResultViewModel = _mapper.Map<PagedResultViewModel<PerformanceViewModel>>(pagedResultDTO);
 
             return Ok(pagedResultViewModel);

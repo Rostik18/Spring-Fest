@@ -23,11 +23,27 @@ namespace SF.Services
             _DBContext = dbContext;
         }
 
-        public async Task<PagedResultDTO<BandDTO>> GetBandsPageAsync(int page, int pageSize)
+        public async Task<PagedResultDTO<BandDTO>> GetBandsPageAsync(int page, int pageSize, BandFilterDTO bandFilterDTO)
         {
-            var query = _DBContext.Bands
+            IQueryable<BandEntity> query = _DBContext.Bands
                 .Include(band => band.BandGenres)
                 .ThenInclude(bg => bg.Genre);
+
+            var predicate = PredicateBuilderHelper.True<BandEntity>();
+
+            if (bandFilterDTO.StageId != null)
+            {
+                predicate = predicate.And(band => band.Performances.Any(p => p.StageId == bandFilterDTO.StageId));
+            }
+            if (bandFilterDTO.GenreIds != null)
+            {
+                //TO DO
+                //Потрібно щоб група одночасно належала до всіх вибраних жанрів.
+                //Чи не треба?
+                predicate = predicate.And(band => band.BandGenres.Any(bg => bandFilterDTO.GenreIds.Contains(bg.GenreId)));
+            }
+
+            query = query.Where(predicate);
 
             var pagedResult = await _DBContext.GetPage<BandEntity, BandDTO>(_mapper, query, page, pageSize);
 

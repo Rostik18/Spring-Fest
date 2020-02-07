@@ -26,9 +26,11 @@ namespace SF.WebAPI.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetAllTicketsAsync()
+        public async Task<IActionResult> GetAllTicketsAsync([FromQuery] TicketFilterViewModel ticketFilterViewModel)
         {
-            var ticketsDTO = await _ticketService.GetAllTicketsAsync();
+            var ticketFilterDTO = _mapper.Map<TicketFilterDTO>(ticketFilterViewModel);
+
+            var ticketsDTO = await _ticketService.GetAllTicketsAsync(ticketFilterDTO);
 
             var ticketsViewModel = _mapper.Map<List<TicketViewModel>>(ticketsDTO);
 

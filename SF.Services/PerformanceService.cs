@@ -98,14 +98,25 @@ namespace SF.Services
             return performanceDTO;
         }
 
-        public async Task<PagedResultDTO<PerformanceDTO>> GetPerformancesPageAsync(int page, int pageSize)
+        public async Task<PagedResultDTO<PerformanceDTO>> GetPerformancesPageAsync(int page, int pageSize, PerformanceFilterDTO performanceFilterDTO)
         {
-            var query = _DBContext.Performances
+            IQueryable<PerformanceEntity> query = _DBContext.Performances
                 .Include(p => p.Band)
                     .ThenInclude(b => b.BandGenres)
                         .ThenInclude(db => db.Genre)
                 .Include(p => p.Stage)
                 .Include(p => p.Festival);
+
+            var predicate = PredicateBuilderHelper.True<PerformanceEntity>();
+
+            predicate = predicate.And(performance => performance.FestivalId == performanceFilterDTO.FestivalId);
+
+            if (performanceFilterDTO.StageId != null)
+            {
+                predicate = predicate.And(performance => performance.StageId == performanceFilterDTO.StageId);
+            }
+
+            query = query.Where(predicate);
 
             var pagedResult = await _DBContext.GetPage<PerformanceEntity, PerformanceDTO>(_mapper, query, page, pageSize);
 

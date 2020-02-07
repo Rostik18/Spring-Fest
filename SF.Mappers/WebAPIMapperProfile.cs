@@ -83,6 +83,11 @@ namespace SF.Mappers
             CreateMap<TicketDTO, TicketViewModel>();
             CreateMap<CreateTicketViewModel, CreateTicketDTO>();
             CreateMap<UpdateTicketViewModel, UpdateTicketDTO>();
+
+            //Filters
+            CreateMap<BandFilterViewModel, BandFilterDTO>();
+            CreateMap<PerformanceFilterViewModel, PerformanceFilterDTO>();
+            CreateMap<TicketFilterViewModel, TicketFilterDTO>();
         }
     }
 }

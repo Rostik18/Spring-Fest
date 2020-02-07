@@ -6,7 +6,7 @@ namespace SF.Services.Interfaces
 {
     public interface IPerformanceService
     {
-        Task<PagedResultDTO<PerformanceDTO>> GetPerformancesPageAsync(int page, int pageSize);
+        Task<PagedResultDTO<PerformanceDTO>> GetPerformancesPageAsync(int page, int pageSize, PerformanceFilterDTO performanceFilterDTO);
         Task<PerformanceDTO> GetPerformanceByIdAsync(int performanceId);
         Task<PerformanceDTO> CreatePerformanceAsync(CreatePerformanceDTO createPerformanceDTO);
         Task<PerformanceDTO> UpdatePerformanceAsync(UpdatePerformanceDTO updatePerformanceDTO);

@@ -27,9 +27,12 @@ namespace SF.WebAPI.Controllers
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetBandsPageAsync([FromQuery] [GreaterThanZero] int page,
-                                                           [FromQuery] [GreaterThanZero] int pageSize)
+                                                           [FromQuery] [GreaterThanZero] int pageSize,
+                                                           [FromQuery] BandFilterViewModel bandFilterViewModel)
         {
-            var pagedResultDTO = await _bandService.GetBandsPageAsync(page, pageSize);
+            var bandFilterDTO = _mapper.Map<BandFilterDTO>(bandFilterViewModel);
+
+            var pagedResultDTO = await _bandService.GetBandsPageAsync(page, pageSize, bandFilterDTO);
             var pagedResultViewModel = _mapper.Map<PagedResultViewModel<BandViewModel>>(pagedResultDTO);
 
             return Ok(pagedResultViewModel);

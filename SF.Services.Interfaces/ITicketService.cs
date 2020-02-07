@@ -6,7 +6,7 @@ namespace SF.Services.Interfaces
 {
     public interface ITicketService
     {
-        Task<List<TicketDTO>> GetAllTicketsAsync();
+        Task<List<TicketDTO>> GetAllTicketsAsync(TicketFilterDTO ticketFilterDTO);
         Task<TicketDTO> GetTicketByIdAsync(int ticketId);
         Task<TicketDTO> CreateTicketAsync(CreateTicketDTO createTicketDTO);
         Task<TicketDTO> UpdateTicketAsync(UpdateTicketDTO updateTicketDTO);

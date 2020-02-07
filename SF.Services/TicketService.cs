@@ -66,12 +66,14 @@ namespace SF.Services
             await _DBContext.SaveChangesAsync();
         }
 
-        public async Task<List<TicketDTO>> GetAllTicketsAsync()
+        public async Task<List<TicketDTO>> GetAllTicketsAsync(TicketFilterDTO ticketFilterDTO)
         {
             var tickets = await _DBContext.Tickets
                 .Include(t => t.Festival)
                 .Include(t => t.Purchases)
-                .AsNoTracking().ToListAsync();
+                .AsNoTracking()
+                .Where(ticket => ticket.FestivalId == ticketFilterDTO.FestivalId)
+                .ToListAsync();
 
             var ticketsDTO = _mapper.Map<List<TicketDTO>>(tickets);
 
