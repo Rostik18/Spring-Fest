@@ -91,8 +91,8 @@ namespace SF.Infrastructure.Migrations
                 {
                     { 2, 2, new DateTimeOffset(new DateTime(2020, 8, 29, 22, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 10, 0, 0), 1, 1 },
                     { 1, 1, new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 20, 0, 0), 1, 1 },
-                    { 4, 4, new DateTimeOffset(new DateTime(2020, 8, 30, 20, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 10, 0, 0), 1, 2 },
-                    { 3, 1, new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 20, 0, 0), 1, 1 }
+                    { 3, 3, new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 20, 0, 0), 1, 3 },
+                    { 4, 4, new DateTimeOffset(new DateTime(2020, 8, 30, 20, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), new TimeSpan(0, 1, 10, 0, 0), 1, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -113,12 +113,12 @@ namespace SF.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Purchases",
                 columns: new[] { "Id", "BarCode", "CustomerId", "IsAvailable", "TicketId" },
-                values: new object[] { 1, new Guid("786f0006-1b4a-4e57-b8a7-88d715a4d429"), 1, true, 1 });
+                values: new object[] { 1, new Guid("67be354d-5d93-41f9-859a-1f8106670bb6"), 1, true, 1 });
 
             migrationBuilder.InsertData(
                 table: "Purchases",
                 columns: new[] { "Id", "BarCode", "CustomerId", "IsAvailable", "TicketId" },
-                values: new object[] { 2, new Guid("2328084a-cfbd-434a-9a64-475b175cdaba"), 1, true, 8 });
+                values: new object[] { 2, new Guid("ed7be15e-cfce-4bbd-afd9-228caced78a7"), 1, true, 8 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -239,11 +239,6 @@ namespace SF.Infrastructure.Migrations
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Stages",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
                 table: "Tickets",
                 keyColumn: "Id",
                 keyValue: 2);
@@ -342,6 +337,11 @@ namespace SF.Infrastructure.Migrations
                 table: "Stages",
                 keyColumn: "Id",
                 keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Stages",
+                keyColumn: "Id",
+                keyValue: 3);
 
             migrationBuilder.DeleteData(
                 table: "Tickets",

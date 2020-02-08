@@ -436,11 +436,11 @@ namespace SF.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            BandId = 1,
+                            BandId = 3,
                             BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
                             Duration = new TimeSpan(0, 1, 20, 0, 0),
                             FestivalId = 1,
-                            StageId = 1
+                            StageId = 3
                         },
                         new
                         {
@@ -486,7 +486,7 @@ namespace SF.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            BarCode = new Guid("786f0006-1b4a-4e57-b8a7-88d715a4d429"),
+                            BarCode = new Guid("67be354d-5d93-41f9-859a-1f8106670bb6"),
                             CustomerId = 1,
                             IsAvailable = true,
                             TicketId = 1
@@ -494,7 +494,7 @@ namespace SF.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            BarCode = new Guid("2328084a-cfbd-434a-9a64-475b175cdaba"),
+                            BarCode = new Guid("ed7be15e-cfce-4bbd-afd9-228caced78a7"),
                             CustomerId = 1,
                             IsAvailable = true,
                             TicketId = 8

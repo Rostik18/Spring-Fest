@@ -210,42 +210,46 @@ namespace SF.Infrastructure
                 });
 
             modelBuilder.Entity<PerformanceEntity>().HasData(
-                new PerformanceEntity
-                {
-                    Id = 1,
-                    BandId = 1,
-                    StageId = 1,
-                    FestivalId = 1,
-                    BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0)),
-                    Duration = new TimeSpan(1, 20, 0)
-                },
-                new PerformanceEntity
-                {
-                    Id = 2,
-                    BandId = 2,
-                    StageId = 1,
-                    FestivalId = 1,
-                    BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 29, 22, 0, 0)),
-                    Duration = new TimeSpan(1, 10, 0)
-                },
-                new PerformanceEntity
-                {
-                    Id = 3,
-                    BandId = 1,
-                    StageId = 1,
-                    FestivalId = 1,
-                    BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0)),
-                    Duration = new TimeSpan(1, 20, 0)
-                },
-                new PerformanceEntity
-                {
-                    Id = 4,
-                    BandId = 4,
-                    StageId = 2,
-                    FestivalId = 1,
-                    BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 20, 0, 0)),
-                    Duration = new TimeSpan(1, 10, 0)
-                });
+                 //Metallica
+                 new PerformanceEntity
+                 {
+                     Id = 1,
+                     BandId = 1,
+                     StageId = 1,
+                     FestivalId = 1,
+                     BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0)),
+                     Duration = new TimeSpan(1, 20, 0)
+                 },
+                 //BMTH
+                 new PerformanceEntity
+                 {
+                     Id = 2,
+                     BandId = 2,
+                     StageId = 1,
+                     FestivalId = 1,
+                     BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 29, 22, 0, 0)),
+                     Duration = new TimeSpan(1, 10, 0)
+                 },
+                 //LOTR
+                 new PerformanceEntity
+                 {
+                     Id = 3,
+                     BandId = 3,
+                     StageId = 3,
+                     FestivalId = 1,
+                     BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 22, 0, 0)),
+                     Duration = new TimeSpan(1, 20, 0)
+                 },
+                 //Led Zeppelin
+                 new PerformanceEntity
+                 {
+                     Id = 4,
+                     BandId = 4,
+                     StageId = 2,
+                     FestivalId = 1,
+                     BeginingTime = new DateTimeOffset(new DateTime(2020, 8, 30, 20, 0, 0)),
+                     Duration = new TimeSpan(1, 10, 0)
+                 });
 
             modelBuilder.Entity<TicketEntity>().HasData(
                 new TicketEntity
