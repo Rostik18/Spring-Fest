@@ -7,9 +7,8 @@ namespace SF.WebAPI.Models.Festivals
     public class CreateFestivalViewModel
     {
         [Required]
-        [MaxLength(4)]
-        [RegularExpression(@"[2]{1}[0-9]{3}", ErrorMessage = "Year have to look like 2XXX.")]
-        public string Year { get; set; }
+        [Range(2000, 3000, ErrorMessage = "Year must be between 2000 and 3000.")]
+        public int Year { get; set; }
 
         [Required]
         [MaxLength(100)]

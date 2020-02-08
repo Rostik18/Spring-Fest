@@ -199,7 +199,7 @@ namespace SF.Infrastructure
                 {
                     Id = 1,
                     Location = "https://www.google.com.ua/maps/place/%D0%90%D0%B5%D1%80%D0%BE%D0%B4%D1%80%D0%BE%D0%BC+%C2%AB%D0%A6%D1%83%D0%BD%D1%96%D0%B2%C2%BB+-+%D1%81%D1%82%D1%80%D0%B8%D0%B1%D0%BA%D0%B8+%D0%B7+%D0%BF%D0%B0%D1%80%D0%B0%D1%88%D1%83%D1%82%D0%BE%D0%BC/@49.8211939,23.6848984,16.48z/data=!4m5!3m4!1s0x473b1e99ccdc9dd9:0xb5a7d47bdfe021fc!8m2!3d49.8215501!4d23.6873576?hl=uk",
-                    Year = "2020"
+                    Year = 2020
                 });
 
             modelBuilder.Entity<PartnerFestivalEntity>().HasData(

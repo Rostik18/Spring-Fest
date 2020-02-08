@@ -10,9 +10,9 @@ namespace SF.WebAPI.Models.Festivals
         [GreaterThanZero]
         public int Id { get; set; }
 
-        [MaxLength(4)]
-        [RegularExpression(@"[2]{1}[0-9]{3}")]
-        public string Year { get; set; }
+
+        [Range(2000, 3000, ErrorMessage = "Year must be between 2000 and 3000.")]
+        public int? Year { get; set; }
 
         [MaxLength(100)]
         public string Location { get; set; }

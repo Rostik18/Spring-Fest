@@ -5,7 +5,7 @@ namespace SF.Domain.Entities
 {
     public class FestivalEntity : BaseEntity
     {
-        public string Year { get; set; }
+        public int Year { get; set; }
         public string Location { get; set; }
 
         public List<PerformanceEntity> Performances { get; set; }

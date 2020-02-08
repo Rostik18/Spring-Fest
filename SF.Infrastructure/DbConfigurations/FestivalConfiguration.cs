@@ -14,7 +14,6 @@ namespace SF.Infrastructure.DbConfigurations
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Year)
-                .HasMaxLength(4)
                 .IsRequired();
 
             builder.Property(e => e.Location)

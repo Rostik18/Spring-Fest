@@ -89,9 +89,9 @@ namespace SF.Services
                 throw new ItemNotFoundException($"Festival with id {updateFestivalDTO.Id} not found.");
             }
 
-            if (!string.IsNullOrWhiteSpace(updateFestivalDTO.Year))
+            if (updateFestivalDTO.Year != null)
             {
-                festival.Year = updateFestivalDTO.Year;
+                festival.Year = updateFestivalDTO.Year.Value;
             }
             if (!string.IsNullOrWhiteSpace(updateFestivalDTO.Location))
             {
