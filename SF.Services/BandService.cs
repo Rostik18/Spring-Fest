@@ -31,6 +31,10 @@ namespace SF.Services
 
             var predicate = PredicateBuilderHelper.True<BandEntity>();
 
+            if (bandFilterDTO.FestivalId != null)
+            {
+                predicate = predicate.And(band => band.Performances.Any(p => p.FestivalId == bandFilterDTO.FestivalId));
+            }
             if (bandFilterDTO.StageId != null)
             {
                 predicate = predicate.And(band => band.Performances.Any(p => p.StageId == bandFilterDTO.StageId));
@@ -52,7 +56,10 @@ namespace SF.Services
 
         public async Task<BandDTO> GetBandByIdAsync(int bandId)
         {
-            var band = await _DBContext.Bands.AsNoTracking().FirstOrDefaultAsync(b => b.Id == bandId);
+            var band = await _DBContext.Bands.AsNoTracking()
+                .Include(g => g.BandGenres)
+                .ThenInclude(bg => bg.Genre)
+                .FirstOrDefaultAsync(b => b.Id == bandId);
 
             if (band == null)
             {
