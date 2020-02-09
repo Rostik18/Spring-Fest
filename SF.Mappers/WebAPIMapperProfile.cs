@@ -9,6 +9,7 @@ using SF.Services.Models.Partners;
 using SF.Services.Models.Performances;
 using SF.Services.Models.Purchases;
 using SF.Services.Models.Stages;
+using SF.Services.Models.Statistics;
 using SF.Services.Models.Tickets;
 using SF.WebAPI.Models;
 using SF.WebAPI.Models.Admins;
@@ -20,6 +21,7 @@ using SF.WebAPI.Models.Partners;
 using SF.WebAPI.Models.Performances;
 using SF.WebAPI.Models.Purchases;
 using SF.WebAPI.Models.Stages;
+using SF.WebAPI.Models.Statistics;
 using SF.WebAPI.Models.Tickets;
 
 namespace SF.Mappers
@@ -83,6 +85,9 @@ namespace SF.Mappers
             CreateMap<TicketDTO, TicketViewModel>();
             CreateMap<CreateTicketViewModel, CreateTicketDTO>();
             CreateMap<UpdateTicketViewModel, UpdateTicketDTO>();
+
+            //Statistics
+            CreateMap<FestivalStatisticDTO, FestivalStatisticViewModel>();
 
             //Filters
             CreateMap<BandFilterViewModel, BandFilterDTO>();
