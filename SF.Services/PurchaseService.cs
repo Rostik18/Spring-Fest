@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Linq;
+using System.Globalization;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SF.Domain.Entities;
+using SF.Domain.Enumerations;
 using SF.Infrastructure;
 using SF.Services.Helpers;
 using SF.Services.Interfaces;
@@ -18,12 +19,14 @@ namespace SF.Services
         private readonly IMapper _mapper;
         private readonly SFDbContext _DBContext;
         private readonly ICustomerService _customerService;
+        private readonly IEmailSenderService _emailSenderService;
 
-        public PurchaseService(IMapper mapper, SFDbContext dbContext, ICustomerService customerService)
+        public PurchaseService(IMapper mapper, SFDbContext dbContext, ICustomerService customerService, IEmailSenderService emailSenderService)
         {
             _mapper = mapper;
             _DBContext = dbContext;
             _customerService = customerService;
+            _emailSenderService = emailSenderService;
         }
 
         public async Task<PurchaseDTO> CreatePurchaseAsync(CreatePurchaseDTO createPurchaseDTO)
@@ -48,9 +51,20 @@ namespace SF.Services
             await _DBContext.Purchases.AddAsync(purchase); //1 звернення до БД
             await _DBContext.SaveChangesAsync();
 
-            /*
-                Додати розсилку квитка на email. 
-            */
+            //Email розсилка
+            string type = "";
+            switch (ticket.Type)
+            {
+                case TicketType.Festival: { type = "фестиваль"; break; }
+                case TicketType.Parking: { type = "парковка"; break; }
+                case TicketType.Tent: { type = "наметове містечко"; break; }
+            }
+            var date = ticket.BeginingTime.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
+
+            string message = string.Format(Constants.Email.tickert, $"{customer.FirstName} {customer.LastName}", type, date,
+                                           ticket.Duration, ticket.Price, purchase.BarCode.ToString());
+            _emailSenderService.SendEmailHtmlTextAsync(customer.Email, "Квиток на фестиваль", message);
+            //
 
             var purchaseDTO = _mapper.Map<PurchaseDTO>(purchase);
 

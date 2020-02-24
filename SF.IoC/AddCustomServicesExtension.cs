@@ -19,6 +19,7 @@ namespace SF.IoC
             serviceCollection.AddTransient<ICustomerService, CustomerService>();
             serviceCollection.AddTransient<IPurchaseService, PurchaseService>();
             serviceCollection.AddTransient<IStatisticService, StatisticService>();
+            serviceCollection.AddTransient<IEmailSenderService, EmailSenderService>();
         }
     }
 }
