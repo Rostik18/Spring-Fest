@@ -3,11 +3,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using SF.Infrastructure;
 using SF.IoC;
 using SF.Services.Interfaces.CustomExceptions;
 using SF.Services.Models;
@@ -94,6 +96,8 @@ namespace SF.WebAPI
             services.AddMapper();
 
             services.AddDatabaseContext(appSettings.ConnectionString);
+
+            services.BuildServiceProvider().GetService<SFDbContext>().Database.Migrate();
 
             services.AddCustomServices();
         }
