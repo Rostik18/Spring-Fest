@@ -127,6 +127,13 @@ namespace SF.WebAPI
 
             #endregion
 
+            app.UseCors(builder => builder
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .SetIsOriginAllowed(_ => true)
+              .AllowCredentials()
+            );
+
             app.UseAuthentication();
             app.UseHttpsRedirection();
 
